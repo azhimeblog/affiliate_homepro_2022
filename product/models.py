@@ -29,3 +29,9 @@ class Products(models.Model):
     
     def get_absolute_url(self):
         return reverse('productdetails', args=[str(self.name)])
+
+class Category(models.Model):
+    catagory_title = models.CharField(max_length=255,verbose_name="ชื่อหมวดสินค้า")
+    catagory_details = models.CharField(max_length=1000,default="รายละเอียดหมวดสินค้า",blank=True, null=True)
+    def __str__(self):
+        return self.catagory_title

@@ -1,15 +1,17 @@
 from django.shortcuts import render
-from .models import Products
+from .models import Products,Category
 from django.db.models import Count
 from django.core.paginator import Paginator , EmptyPage , InvalidPage
 
 # Create your views here.
 def index(request):
-    return render(request, 'frontend/main.html', {})
+    allcategory = Category.objects.all()
+    return render(request, 'frontend/main.html', {"allcategory":allcategory})
 
 # Create your views here.
 def categorys(request,cat_name):
     # categoryname = Products.objects.get(product_category=cat_name)
+    allcategory = Category.objects.all()
     products = Products.objects.all().filter(product_category=cat_name)
     topviewproducts = Products.objects.all().filter(product_category=cat_name).order_by('product_view')[:20]
     productscount = len(products)
@@ -27,9 +29,10 @@ def categorys(request,cat_name):
     except (EmptyPage,InvalidPage):
         Productsperpage = paginator.page(paginator.num_pages)
 
-    return render(request, 'frontend/category.html', {'products':products,'topviewproducts':topviewproducts,'cat_name':cat_name,"productscount":productscount,'productall':Productsperpage})
+    return render(request, 'frontend/category.html', {"allcategory":allcategory,'products':products,'topviewproducts':topviewproducts,'cat_name':cat_name,"productscount":productscount,'productall':Productsperpage})
 
 def productdetails(request,product_name):
+    allcategory = Category.objects.all()
     singleProducts = Products.objects.get(product_title=product_name)
     singleProducts.product_view = singleProducts.product_view+1
 
@@ -37,7 +40,7 @@ def productdetails(request,product_name):
     shopeeprice = singleProducts.product_price +20
     # singleProducts.save()
 
-    return render(request, 'frontend/productdetail.html',{'product_name':product_name,'singleProducts':singleProducts,"lazadaprice":lazadaprice,"shopeeprice":shopeeprice})
+    return render(request, 'frontend/productdetail.html',{"allcategory":allcategory,'product_name':product_name,'singleProducts':singleProducts,"lazadaprice":lazadaprice,"shopeeprice":shopeeprice})
 
 def policy(request):
     return render(request, 'frontend/policy.html')

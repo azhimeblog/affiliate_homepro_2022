@@ -31,7 +31,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">หน้าแรก</a>
+                            <a class="nav-link active" aria-current="page" href="{% url 'index' %} ">หน้าแรก</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'policy' %} ">นโยบายเกี่ยวกับเรา</a>
@@ -41,12 +41,10 @@
                      หมวดหมู่สินค้า
                     </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                {% for cat in allcategory %}
+                                <li><a class="dropdown-item" href="{% url 'categorys' cat.catagory_title %} ">{{cat.catagory_title}}</a></li>
+
+                                {% endfor %}
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -64,14 +62,14 @@
     <section id="overflowproductcat">
         <div class="container-fluid">
             <div class="row d-inline-block w-100" style="overflow: auto; white-space: nowrap;">
-                <div class="text-center d-inline-block w-25 mx-auto"> <i class="bi bi-tv w-50" style="font-size: 4rem;"></i> <br> ทีวี</div>
-                <p class="text-center d-inline-block w-25 mx-auto"> <i class="bi bi-safe2 w-50" style="font-size: 4rem;"></i> <br> เครื่องซักผ้า</p>
-                <p class="text-center d-inline-block w-25 mx-auto"> <i class="bi bi-thermometer-snow w-50" style="font-size: 4rem;"></i> <br> เครื่องปรับอากาศ</p>
-                <p class="text-center d-inline-block w-25 mx-auto"> <i class="bi bi-columns w-50" style="font-size: 4rem;"></i> <br> ตู้เย็น</p>
-                <p class="text-center d-inline-block w-25 mx-auto"> <i class="bi bi-lamp w-50" style="font-size: 4rem;"></i> <br> โคมไฟ</p>
-                <p class="text-center d-inline-block w-25 mx-auto"> <i class="bi bi-building w-50" style="font-size: 4rem;"></i> <br> เฟอร์นิเจอร์</p>
-                <p class="text-center d-inline-block w-25 mx-auto"> <i class="bi bi-windows w-50" style="font-size: 4rem;"></i> <br> คอมพิวเตอร์</p>
-                <p class="text-center d-inline-block w-25 mx-auto"> <i class="bi bi-bag w-50" style="font-size: 4rem;"></i> <br> อุปกรณ์จัดเก็บ</p>
+                <a href="{% url 'categorys' 'ทีวี' %}" class="text-center d-inline-block w-25 mx-auto"> <i class="bi bi-tv w-50" style="font-size: 4rem;"></i> <br> ทีวี</a>
+                <a href="{% url 'categorys' 'เครื่องซักผ้า' %}" class="text-center d-inline-block w-25 mx-auto"> <i class="bi bi-safe2 w-50" style="font-size: 4rem;"></i> <br> เครื่องซักผ้า</a>
+                <a href="{% url 'categorys' 'เครื่องปรับอากาศ' %}" class="text-center d-inline-block w-25 mx-auto"> <i class="bi bi-thermometer-snow w-50" style="font-size: 4rem;"></i> <br> เครื่องปรับอากาศ</a>
+                <a href="{% url 'categorys' 'ตู้เย็น' %}" class="text-center d-inline-block w-25 mx-auto"> <i class="bi bi-columns w-50" style="font-size: 4rem;"></i> <br> ตู้เย็น</a>
+                <a href="{% url 'categorys' 'โคมไฟ' %}" class="text-center d-inline-block w-25 mx-auto"> <i class="bi bi-lamp w-50" style="font-size: 4rem;"></i> <br> โคมไฟ</a>
+                <a href="{% url 'categorys' 'เฟอร์นิเจอร์' %}" class="text-center d-inline-block w-25 mx-auto"> <i class="bi bi-building w-50" style="font-size: 4rem;"></i> <br> เฟอร์นิเจอร์</a>
+                <a href="{% url 'categorys' 'คอมพิวเตอร์' %}" class="text-center d-inline-block w-25 mx-auto"> <i class="bi bi-windows w-50" style="font-size: 4rem;"></i> <br> คอมพิวเตอร์</p>
+                    <a href="{% url 'categorys' 'อุปกรณ์จัดเก็บ' %}" class="text-center d-inline-block w-25 mx-auto"> <i class="bi bi-bag w-50" style="font-size: 4rem;"></i> <br> อุปกรณ์จัดเก็บ</a>
             </div>
         </div>
     </section>
