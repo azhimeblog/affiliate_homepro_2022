@@ -38,3 +38,6 @@ def productdetails(request,product_name):
     # singleProducts.save()
 
     return render(request, 'frontend/productdetail.html',{'product_name':product_name,'singleProducts':singleProducts,"lazadaprice":lazadaprice,"shopeeprice":shopeeprice})
+
+def policy(request):
+    return render(request, 'frontend/policy.html')

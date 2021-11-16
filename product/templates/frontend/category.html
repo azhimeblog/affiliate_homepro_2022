@@ -34,7 +34,7 @@
                             <a class="nav-link active" aria-current="page" href="#">หน้าแรก</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">นโยบายเกี่ยวกับเรา</a>
+                            <a class="nav-link" href="{% url 'policy' %} ">นโยบายเกี่ยวกับเรา</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -121,9 +121,9 @@
                 {% for product in productall %}
 
                 <div class="p-2 d-inline-block text-center col-md-5 col-5">
-                    <a class="text-decoration-none" href=" {% url 'productdetails' product.product_title %} "> <p class="text-wrap">{{ product.product_title }}</p> </a>
-                    <img class="text-center" src="{{product.product_image1}}">
-                    <p class="text-wrap"> ราคาล่าสุด {{ product.product_price }} ฿ </p>
+                    <a href="{% url 'productdetails' product.product_title %} class="text-wrap text-decoration-none"" "> <p class="text-wrap text-decoration-none">{{ product.product_title }}</p> </a>
+                    <a href="{% url 'productdetails' product.product_title %} "><img class="text-center" src="{{product.product_image1}}"></a>
+                    <p class="text-wrap"> ราคาล่าสุด {{ product.product_price }} ฿ </p></a>
                     <div class="row md-2 p-2">
                         <a href="{{product.shopee_link}}" class="col-12 col-md-6 text-white bg-danger p-2 text-decoration-none">
                             สั่งซื้อผ่าน Shopee
