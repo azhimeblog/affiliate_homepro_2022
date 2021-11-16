@@ -1,5 +1,8 @@
 from django.urls import path #เลือกใช้งาน Path
 from . import views #อ่านคำสั่งในไฟล์ views.py
 urlpatterns = [
-    path('', views.index, name='index'), #ให้เรียกใช้ฟักง์ชั่น index ในไฟล์ views.py
+    path('', views.index, name='index'), 
+    path('category/<str:cat_name>', views.categorys, name='categorys'), 
+    path('product/<str:product_name>', views.productdetails, name='productdetails'), 
+
 ]

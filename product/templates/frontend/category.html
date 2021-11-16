@@ -61,6 +61,11 @@
             </div>
         </nav>
     </section>
+
+    {% comment %} {% for product in products %}
+    <p>{{product.product_title }}</p>
+    <img src="{{product.product_image1}}"> {% endfor %} {% endcomment %}
+
     <section id="overflowproductcat">
         <div class="container-fluid">
             <div class="row d-inline-block w-100" style="overflow: auto; white-space: nowrap;">
@@ -77,78 +82,32 @@
     </section>
     <section id="topproductview">
         <div class="container mt-2">
-            <h2 class="text-center mt-2">สินค้าในหมวด ... ที่มีคนชมเยอะที่สุด </h2>
-            <p class="text-center">จากสินค้าทั้งหมดในเว็บไซต์ 235 ชิ้น</p>
+            <h2 class="text-center mt-2">สินค้าในหมวด {{cat_name}} ที่มีคนชมเยอะที่สุด </h2>
+            <p class="text-center">จากสินค้าทั้งหมดในเว็บไซต์ {{productscount}} ชิ้น</p>
         </div>
+
         <div class="container mt-2">
             <div class="row d-inline-block w-100" style="overflow: auto; white-space: nowrap;">
 
+                {% for product in topviewproducts %}
                 <div class="w-50 p-3 d-inline-block text-center">
-                    <p class="text-wrap"> ตู้เย็น 2 ประตู SAMSUNG RT20HAR1DSA/ST 7.4 คิว </p>
-                    <img class="text-center" src="https://cdn.homepro.co.th/ART_IMAGE/11/678/1167822/160x160/10072021_1167822$Imagec1.jpg">
-                    <p class="text-wrap"> ราคาล่าสุด 8,999 ฿ </p>
+                    <p class="text-wrap">{{ product.product_title }}</p>
+                    <img class="text-center" src="{{product.product_image1}}">
+                    <p class="text-wrap"> ราคาล่าสุด {{ product.product_price }} ฿ </p>
                     <div class="row md-2 p-2">
-                        <div class="col-12 col-md-6 text-white bg-danger p-2">
+                        <a href="{{product.shopee_link}}" class="col-12 col-md-6 text-white bg-danger p-2 text-decoration-none">
                             สั่งซื้อผ่าน Shopee
-                        </div>
-                        <div class="col-12 col-md-6 text-white bg-warning p-2">
+                        </a>
+                        <a href="{{product.lazada_link}}" class="col-12 col-md-6 text-white bg-warning p-2 text-decoration-none">
                             สั่งซื้อผ่าน Lazada
-                        </div>
-                        <div class="col-12 col-md-12 text-white bg-primary p-2">
+                        </a>
+                        <a href="{{product.homepro_link}}" class="col-12 col-md-12 text-white bg-primary p-2 text-decoration-none">
                             สั่งซื้อผ่านHomepro
-                        </div>
+                        </a>
                     </div>
                 </div>
-                <div class="w-50 p-3 d-inline-block text-center">
-                    <p class="text-wrap"> ตู้เย็น 2 ประตู SAMSUNG RT20HAR1DSA/ST 7.4 คิว </p>
-                    <img class="text-center" src="https://cdn.homepro.co.th/ART_IMAGE/11/678/1167822/160x160/10072021_1167822$Imagec1.jpg">
-                    <p class="text-wrap"> ราคาล่าสุด 8,999 ฿ </p>
-                    <div class="row md-2 p-2">
-                        <div class="col-12 col-md-6 text-white bg-danger p-2">
-                            สั่งซื้อผ่าน Shopee
-                        </div>
-                        <div class="col-12 col-md-6 text-white bg-warning p-2">
-                            สั่งซื้อผ่าน Lazada
-                        </div>
-                        <div class="col-12 col-md-12 text-white bg-primary p-2">
-                            สั่งซื้อผ่านHomepro
-                        </div>
-                    </div>
-                </div>
-                <div class="w-50 p-3 d-inline-block text-center">
-                    <p class="text-wrap"> ตู้เย็น 2 ประตู SAMSUNG RT20HAR1DSA/ST 7.4 คิว </p>
-                    <img class="text-center" src="https://cdn.homepro.co.th/ART_IMAGE/11/678/1167822/160x160/10072021_1167822$Imagec1.jpg">
-                    <p class="text-wrap"> ราคาล่าสุด 8,999 ฿ </p>
-                    <div class="row md-2 p-2">
-                        <div class="col-12 col-md-6 text-white bg-danger p-2">
-                            สั่งซื้อผ่าน Shopee
-                        </div>
-                        <div class="col-12 col-md-6 text-white bg-warning p-2">
-                            สั่งซื้อผ่าน Lazada
-                        </div>
-                        <div class="col-12 col-md-12 text-white bg-primary p-2">
-                            สั่งซื้อผ่านHomepro
-                        </div>
-                    </div>
-                </div>
-                <div class="w-50 p-3 d-inline-block text-center">
-                    <p class="text-wrap"> ตู้เย็น 2 ประตู SAMSUNG RT20HAR1DSA/ST 7.4 คิว </p>
-                    <img class="text-center" src="https://cdn.homepro.co.th/ART_IMAGE/11/678/1167822/160x160/10072021_1167822$Imagec1.jpg">
-                    <p class="text-wrap"> ราคาล่าสุด 8,999 ฿ </p>
-                    <div class="row md-2 p-2">
-                        <div class="col-12 col-md-6 text-white bg-danger p-2">
-                            สั่งซื้อผ่าน Shopee
-                        </div>
-                        <div class="col-12 col-md-6 text-white bg-warning p-2">
-                            สั่งซื้อผ่าน Lazada
-                        </div>
-                        <div class="col-12 col-md-12 text-white bg-primary p-2">
-                            สั่งซื้อผ่านHomepro
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                {% endfor %}
+
     </section>
     <hr class="bi-hr">
     <section id="productcat">
@@ -159,106 +118,54 @@
         <div class="container-fluid mt-2">
             <div class="row d-inline-block w-100 text-center">
 
+                {% for product in productall %}
+
                 <div class="p-2 d-inline-block text-center col-md-5 col-5">
-                    <p class="text-wrap"> ตู้เย็น 2 ประตู SAMSUNG RT20HAR1DSA/ST 7.4 คิว </p>
-                    <img class="text-center" src="https://cdn.homepro.co.th/ART_IMAGE/11/678/1167822/160x160/10072021_1167822$Imagec1.jpg">
-                    <p class="text-wrap"> ราคาล่าสุด 8,999 ฿ </p>
+                    <a class="text-decoration-none" href=" {% url 'productdetails' product.product_title %} "> <p class="text-wrap">{{ product.product_title }}</p> </a>
+                    <img class="text-center" src="{{product.product_image1}}">
+                    <p class="text-wrap"> ราคาล่าสุด {{ product.product_price }} ฿ </p>
                     <div class="row md-2 p-2">
-                        <div class="col-12 col-md-6 text-white bg-danger p-2">
+                        <a href="{{product.shopee_link}}" class="col-12 col-md-6 text-white bg-danger p-2 text-decoration-none">
                             สั่งซื้อผ่าน Shopee
-                        </div>
-                        <div class="col-12 col-md-6 text-white bg-warning p-2">
+                        </a>
+                        <a href="{{product.lazada_link}}" class="col-12 col-md-6 text-white bg-warning p-2 text-decoration-none">
                             สั่งซื้อผ่าน Lazada
-                        </div>
-                        <div class="col-12 col-md-12 text-white bg-primary p-2">
+                        </a>
+                        <a href="{{product.homepro_link}}" class="col-12 col-md-12 text-white bg-primary p-2 text-decoration-none">
                             สั่งซื้อผ่านHomepro
-                        </div>
-                    </div>
-                </div>
-                <div class="p-2 d-inline-block text-center col-md-5 col-5">
-                    <p class="text-wrap"> ตู้เย็น 2 ประตู SAMSUNG RT20HAR1DSA/ST 7.4 คิว </p>
-                    <img class="text-center" src="https://cdn.homepro.co.th/ART_IMAGE/11/678/1167822/160x160/10072021_1167822$Imagec1.jpg">
-                    <p class="text-wrap"> ราคาล่าสุด 8,999 ฿ </p>
-                    <div class="row md-2 p-2">
-                        <div class="col-12 col-md-6 text-white bg-danger p-2">
-                            สั่งซื้อผ่าน Shopee
-                        </div>
-                        <div class="col-12 col-md-6 text-white bg-warning p-2">
-                            สั่งซื้อผ่าน Lazada
-                        </div>
-                        <div class="col-12 col-md-12 text-white bg-primary p-2">
-                            สั่งซื้อผ่านHomepro
-                        </div>
-                    </div>
-                </div>
-                <div class="p-2 d-inline-block text-center col-md-5 col-5">
-                    <p class="text-wrap"> ตู้เย็น 2 ประตู SAMSUNG RT20HAR1DSA/ST 7.4 คิว </p>
-                    <img class="text-center" src="https://cdn.homepro.co.th/ART_IMAGE/11/678/1167822/160x160/10072021_1167822$Imagec1.jpg">
-                    <p class="text-wrap"> ราคาล่าสุด 8,999 ฿ </p>
-                    <div class="row md-2 p-2">
-                        <div class="col-12 col-md-6 text-white bg-danger p-2">
-                            สั่งซื้อผ่าน Shopee
-                        </div>
-                        <div class="col-12 col-md-6 text-white bg-warning p-2">
-                            สั่งซื้อผ่าน Lazada
-                        </div>
-                        <div class="col-12 col-md-12 text-white bg-primary p-2">
-                            สั่งซื้อผ่านHomepro
-                        </div>
-                    </div>
-                </div>
-                <div class="p-2 d-inline-block text-center col-md-5 col-5">
-                    <p class="text-wrap"> ตู้เย็น 2 ประตู SAMSUNG RT20HAR1DSA/ST 7.4 คิว </p>
-                    <img class="text-center" src="https://cdn.homepro.co.th/ART_IMAGE/11/678/1167822/160x160/10072021_1167822$Imagec1.jpg">
-                    <p class="text-wrap"> ราคาล่าสุด 8,999 ฿ </p>
-                    <div class="row md-2 p-2">
-                        <div class="col-12 col-md-6 text-white bg-danger p-2">
-                            สั่งซื้อผ่าน Shopee
-                        </div>
-                        <div class="col-12 col-md-6 text-white bg-warning p-2">
-                            สั่งซื้อผ่าน Lazada
-                        </div>
-                        <div class="col-12 col-md-12 text-white bg-primary p-2">
-                            สั่งซื้อผ่านHomepro
-                        </div>
-                    </div>
-                </div>
-                <div class="p-2 d-inline-block text-center col-md-5 col-5">
-                    <p class="text-wrap"> ตู้เย็น 2 ประตู SAMSUNG RT20HAR1DSA/ST 7.4 คิว </p>
-                    <img class="text-center" src="https://cdn.homepro.co.th/ART_IMAGE/11/678/1167822/160x160/10072021_1167822$Imagec1.jpg">
-                    <p class="text-wrap"> ราคาล่าสุด 8,999 ฿ </p>
-                    <div class="row md-2 p-2">
-                        <div class="col-12 col-md-6 text-white bg-danger p-2">
-                            สั่งซื้อผ่าน Shopee
-                        </div>
-                        <div class="col-12 col-md-6 text-white bg-warning p-2">
-                            สั่งซื้อผ่าน Lazada
-                        </div>
-                        <div class="col-12 col-md-12 text-white bg-primary p-2">
-                            สั่งซื้อผ่านHomepro
-                        </div>
-                    </div>
-                </div>
-                <div class="p-2 d-inline-block text-center col-md-5 col-5">
-                    <p class="text-wrap"> ตู้เย็น 2 ประตู SAMSUNG RT20HAR1DSA/ST 7.4 คิว </p>
-                    <img class="text-center" src="https://cdn.homepro.co.th/ART_IMAGE/11/678/1167822/160x160/10072021_1167822$Imagec1.jpg">
-                    <p class="text-wrap"> ราคาล่าสุด 8,999 ฿ </p>
-                    <div class="row md-2 p-2">
-                        <div class="col-12 col-md-6 text-white bg-danger p-2">
-                            สั่งซื้อผ่าน Shopee
-                        </div>
-                        <div class="col-12 col-md-6 text-white bg-warning p-2">
-                            สั่งซื้อผ่าน Lazada
-                        </div>
-                        <div class="col-12 col-md-12 text-white bg-primary p-2">
-                            สั่งซื้อผ่านHomepro
-                        </div>
+                        </a>
                     </div>
                 </div>
 
+                {% endfor %}
             </div>
+
+
+
         </div>
     </section>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <nav aria-label="Page navigation">
+                    {% if productall.paginator.num_pages > 1 %}
+                    <ul class="">
+                        {% for page_number in productall.paginator.page_range %}
+                        <li class="d-inline-block"><a class="page-link" href="?page={{page_number}}">{{page_number}}</a></li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </nav>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- end row -->
+
+
+
     <section id="seo">
         <div class="container">
             <p> ตลาดนกฮูกออนไลน์ เว็บรวมเครื่องใช้ไฟฟ้า ทีวีลดราคา เรารวมสินค้ามากมายจากเว็บดังเอาไว้มากกว่า 50,000 รายการให้คุณสามารถเปรียบเทียบราคาและเลือกซื้อสินค้าออนไลน์ได้ตลอด 24 ชั่วโมง </p>

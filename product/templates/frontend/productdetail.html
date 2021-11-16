@@ -77,8 +77,8 @@
     </section>
     <section id="productoverviews">
         <div class="container mt-2">
-            <h2 class="text-center mt-2">คุณกำลังดู ตู้เย็น 2 ประตู SAMSUNG RT20HAR1DSA/ST 7.4 คิว </h2>
-            <p class="text-center">ขายได้แล้ว 240 ชิ้น อัพเดทล่าสุดเมื่อ 14-11-2021</p>
+            <h2 class="text-center mt-2">คุณกำลังดู {{product_name}} </h2>
+            <p class="text-center">ขายได้แล้ว {{singleProducts.product_sale}} ชิ้น อัพเดทล่าสุดเมื่อ {{singleProducts.update_date}} </p>
             <p class="text-center">คะแนนรีวิว : <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i> 4.5 / 5 </p>
         </div>
         <div class="container mt-2">
@@ -86,24 +86,25 @@
 
                 <div class="col-md-5 col-12 p-3 d-inline-block text-center">
 
-                    <img class="text-center" src="https://cdn.homepro.co.th/ART_IMAGE/11/678/1167822/160x160/10072021_1167822$Imagec1.jpg">
-                    <h3 class="text-wrap"> ราคาล่าสุด 7,690 ฿ </h3>
+                    <img class="text-center" src="{{singleProducts.product_image1}}">
+                    <h3 class="text-wrap"> ราคาล่าสุด {{singleProducts.product_price}} ฿ </h3>
 
                 </div>
                 <div class="col-md-5 col-12  p-1 d-inline-block text-center">
-                    <p class="text-wrap"> ตู้เย็น 2 ประตู SAMSUNG RT20HAR1DSA/ST 7.4 คิว </p>
-                    <p> เว็บเรารวมสินค้าตู้เย็นจากเว็บไซต์ยอดนิยมมากกว่า 5 เว็บไซต์มาให้เทียบราคา คุณสามารถเลือกซื้อตู้เย็นโดยรับส่วนลดจากเว็บต่างๆ ได้ในหมวดนี้ รับส่วนลดจาก Homepro รับส่วนลดจาก Shopee รับส่วนลดจาก Lazada</p>
+                    <p class="text-wrap"> {{product_name}} </p>
+                    <p> เว็บเรารวมสินค้า <b><a href="{% url 'categorys' singleProducts.product_category %} " class="text-decoration-none" >{{singleProducts.product_category}}</a></b> จากเว็บไซต์ยอดนิยมมากกว่า 5 เว็บไซต์มาให้เทียบราคา คุณสามารถเลือกซื้อตู้เย็นโดยรับส่วนลดจากเว็บต่างๆ
+                        ได้ในหมวดนี้ รับส่วนลดจาก Homepro รับส่วนลดจาก Shopee รับส่วนลดจาก Lazada</p>
 
                     <div class="row md-2 p-2">
-                        <div class="col-12 col-md-6 text-white bg-danger p-2 rounded-3">
+                        <a href="{{singleProducts.shopee_link}}" class="text-decoration-none col-12 col-md-6 text-white bg-danger p-2 rounded-3">
                             สั่งซื้อผ่าน Shopee
-                        </div>
-                        <div class="col-12 col-md-6 text-white bg-warning p-2 rounded-3">
+                        </a>
+                        <a href="{{singleProducts.lazada_link}}" class="text-decoration-none col-12 col-md-6 text-white bg-warning p-2 rounded-3">
                             สั่งซื้อผ่าน Lazada
-                        </div>
-                        <div class="col-12 col-md-12 text-white bg-primary p-2 rounded-3">
+                        </a>
+                        <a href="{{singleProducts.homepro_link}}" class="text-decoration-none col-12 col-md-12 text-white bg-primary p-2 rounded-3">
                             สั่งซื้อผ่านHomepro
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -122,12 +123,14 @@
 
     <section id="seo_core_product">
         <div class="container border-1 rounded-2 border-danger">
-            <p> ในปัจจุบันสินค้าในหมวด ..... มีความต้องการสูงมากขึ้นเรื่อยๆ ทำให้สินค้า ...... มีความต้องการและเป็นที่ค้นหาของลูกค้าอยู่เสมอ ด้วยคุณสมบัติที่สามารถตอบโจทย์การใช้งานในชีวิตประจำวันได้ ทำให้มีหลายเว็บไซต์ เอาสินค้านี้ไปวางขายกันมากมาย แต่......
-                ราคาที่ถูกที่สุดและร่วมกับโปรโมชั่นที่โดนใจที่สุดนั้น อาจจะทำให้คุณต้องวุนวายหาข้อมูลกันยกใหญ่</p>
+            <p> ในปัจจุบันสินค้าในหมวด <a href="{% url 'categorys' singleProducts.product_category %} " class="text-decoration-none">{{singleProducts.product_category}}</a> มีความต้องการสูงมากขึ้นเรื่อยๆ ทำให้สินค้า {{product_name}} มีความต้องการและเป็นที่ค้นหาของลูกค้าอยู่เสมอ
+                ด้วยคุณสมบัติที่สามารถตอบโจทย์การใช้งานในชีวิตประจำวันได้ ทำให้มีหลายเว็บไซต์ เอาสินค้านี้ไปวางขายกันมากมาย แต่ {{product_name}} ราคาที่ถูกที่สุดและร่วมกับโปรโมชั่นที่โดนใจที่สุดนั้น อาจจะทำให้คุณต้องวุนวายหาข้อมูลกันยกใหญ่</p>
             <br>
-            <p> หากตอนนี้กำลังหา ..... ไม่ต้องทำการบ้านหรือกังวลอะไรอีกแล้วครับ เพราะเรารวบรวมราคาจากเว็บไซต์ชื่อดังเอาไว้มากมาย ไว้ให้คุณได้เลือกใช้งานและเปรียบเทียบราคากัน พร้อมกับโปรโมชั่นบัตรเครติดที่ร่วมรายการ จะทำให้คุณได้เจอกับ ..... ที่ราคาโดนใจที่สุดแน่นอน
-                ทั้งนี้ข้อมูลที่แสดงข้างต้นเป็นข้อมูลจากวันที่ ...... ที่ระบบของเราได้ทำการเก็บข้อมูลมา หากมีการเปลี่ยนแปลงราคา หรือโปรโมชั่น ต้องขออภัยในความไม่สะดวก ณ ที่นี้ ด้วยครับ หรือหากต้องการหาสินค้าอื่นๆ ในหมวดหมู่ ....... สามารถเลือกซื้อได้จากที่นี้
-                เราหวังเป็นอย่างยิ่งว่า จะทำเสมอประสบการณ์การสั่งซื้อที่ดีที่สุดให้กับคุณ ขอบคุณที่แวะเข้ามาใช้บริการครับ</p>
+            <p> หากตอนนี้กำลังหา {{product_name}} ไม่ต้องทำการบ้านหรือกังวลอะไรอีกแล้วครับ เพราะเรารวบรวมราคาจากเว็บไซต์ชื่อดังเอาไว้มากมาย ไว้ให้คุณได้เลือกใช้งานและเปรียบเทียบราคากัน พร้อมกับโปรโมชั่นบัตรเครติดที่ร่วมรายการ จะทำให้คุณได้เจอกับ {{product_name}}
+                ที่ราคาโดนใจที่สุดแน่นอน ทั้งนี้ข้อมูลที่แสดงข้างต้นเป็นข้อมูลจากวันที่ {{update_date}} ที่ระบบของเราได้ทำการ เก็บข้อมูลมา หากมีการเปลี่ยนแปลงราคา หรือโปรโมชั่น ต้องขออภัยในความไม่สะดวก ณ ที่นี้ ด้วยครับ หรือหากต้องการหาสินค้าอื่นๆ ในหมวดหมู่
+                <a href="{% url 'categorys' singleProducts.product_category %} " class="text-decoration-none">{{singleProducts.product_category}}</a> สามารถเลือกซื้อได้จากที่นี้ เราหวังเป็นอย่างยิ่งว่า จะทำเสมอประสบการณ์การสั่งซื้อที่ดีที่สุดให้กับคุณ
+                ขอบคุณที่แวะเข้ามาใช้บริการครับ
+            </p>
         </div>
 
     </section>
@@ -145,20 +148,20 @@
                     <tbody>
                         <tr>
                             <td>HOMEPRO</td>
-                            <td>7,690 ฿</td>
+                            <td>{{singleProducts.product_price}} ฿</td>
                             <td>
-                                <a href="#" class="btn-success border-2 rounded-3 m-2 p-1 text-decoration-none"> สั่งซื้อสินค้า</a>
+                                <a href="{{singleProducts.homepro_link}}" class="btn-success border-2 rounded-3 m-2 p-1 text-decoration-none"> สั่งซื้อสินค้า</a>
                             </td>
                         </tr>
                         <tr>
                             <td>LAZADA</td>
-                            <td>7,690 ฿</td>
-                            <td><a href="#" class="btn-success border-2 rounded-3 m-2 p-1 text-decoration-none"> สั่งซื้อสินค้า</a></td>
+                            <td>{{lazadaprice}} ฿</td>
+                            <td><a href="{{singleProducts.lazada_link}}" class="btn-success border-2 rounded-3 m-2 p-1 text-decoration-none"> สั่งซื้อสินค้า</a></td>
                         </tr>
                         <tr>
                             <td>SHOPEE</td>
-                            <td>7,690 ฿</td>
-                            <td><a href="#" class="btn-success border-2 rounded-3 m-2 p-1 text-decoration-none"> สั่งซื้อสินค้า</a></td>
+                            <td>{{shopeeprice}} ฿</td>
+                            <td><a href="{{singleProducts.shopee_link}}" class="btn-success border-2 rounded-3 m-2 p-1 text-decoration-none"> สั่งซื้อสินค้า</a></td>
                         </tr>
                     </tbody>
                 </table>
