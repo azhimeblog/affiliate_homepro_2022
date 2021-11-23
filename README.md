@@ -17,3 +17,4 @@ packages ที่จำเป็นในการใช้งาน
 ##### ทั้งนี้เป็นโปรเจคที่ใช้ในการศึกษาสำหรับทำ Affliates เท่านั้น
 
 ขอขอบคุณข้อมูลสินค้าจากเว็บไซต์ [homepro.co.th](https://www.homepro.co.th/ "homepro.co.th")
+ตัวอย่างเว็บไซต์ https://pricecheck.needhobby.com/
