@@ -6,7 +6,13 @@ from django.core.paginator import Paginator , EmptyPage , InvalidPage
 # Create your views here.
 def index(request):
     allcategory = Category.objects.all()
-    return render(request, 'frontend/main.html', {"allcategory":allcategory})
+    topviewproducts = Products.objects.all().order_by('product_view')[:20]
+    bar1products = Products.objects.all().filter(product_category="ตู้เย็น").order_by('product_view')[:20]
+    bar2products = Products.objects.all().filter(product_category="ทีวี").order_by('product_view')[:20]
+    bar3products = Products.objects.all().filter(product_category="ที่นอน").order_by('product_view')[:20]
+    bar4products = Products.objects.all().filter(product_category="เครื่องนอน").order_by('product_view')[:20]
+    return render(request, 'frontend/main.html', {"allcategory":allcategory,"topviewproducts":topviewproducts,"bar1products":bar1products,"bar2products":bar2products,"bar3products":bar3products,"bar4products":bar4products})
+
 
 # Create your views here.
 def categorys(request,cat_name):
@@ -17,7 +23,6 @@ def categorys(request,cat_name):
     productscount = len(products)
     productall = Products.objects.all().filter(product_category=cat_name)
     
-
     paginator = Paginator(productall,50)
     try:
         page = int(request.GET.get('page','1'))

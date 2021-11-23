@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-k7*3sdfxyfmu$_cab$63^%5*0@h6pj9(%^aamid3kque!1al#l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["pricecheck.needhobby.com","localhost","127.0.0.1"]
 
 
 # Application definition
