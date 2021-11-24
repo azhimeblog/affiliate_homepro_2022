@@ -49,3 +49,24 @@ def productdetails(request,product_name):
 
 def policy(request):
     return render(request, 'frontend/policy.html')
+
+def top20article(request,cat_name):
+    # categoryname = Products.objects.get(product_category=cat_name)
+    allcategory = Category.objects.all()
+    products = Products.objects.all().filter(product_category=cat_name)
+    topviewproducts = Products.objects.all().filter(product_category=cat_name).order_by('product_view')[:20]
+    productscount = len(products)
+    productall = Products.objects.all().filter(product_category=cat_name)[:20]
+    
+    paginator = Paginator(productall,10)
+    try:
+        page = int(request.GET.get('page','1'))
+    except :
+        page = 1
+
+    try:
+        Productsperpage = paginator.page(page)
+    except (EmptyPage,InvalidPage):
+        Productsperpage = paginator.page(paginator.num_pages)
+
+    return render(request, 'frontend/top20products.html', {"allcategory":allcategory,'products':products,'topviewproducts':topviewproducts,'cat_name':cat_name,"productscount":productscount,'productall':Productsperpage})
