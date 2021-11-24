@@ -70,3 +70,20 @@ def top20article(request,cat_name):
         Productsperpage = paginator.page(paginator.num_pages)
 
     return render(request, 'frontend/top20products.html', {"allcategory":allcategory,'products':products,'topviewproducts':topviewproducts,'cat_name':cat_name,"productscount":productscount,'productall':Productsperpage})
+
+def article(request):
+    # categoryname = Products.objects.get(product_category=cat_name)
+    allcategory = Category.objects.all()
+    
+    paginator = Paginator(allcategory,30)
+    try:
+        page = int(request.GET.get('page','1'))
+    except :
+        page = 1
+
+    try:
+        Articleperpage = paginator.page(page)
+    except (EmptyPage,InvalidPage):
+        Articleperpage = paginator.page(paginator.num_pages)
+
+    return render(request, 'frontend/top20pages.html', {"allcategory":allcategory,'all':Articleperpage})

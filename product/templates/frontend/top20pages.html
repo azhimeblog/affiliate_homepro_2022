@@ -37,17 +37,17 @@
                             <a class="nav-link" href="{% url 'policy' %} ">นโยบายเกี่ยวกับเรา</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'policy' %} ">บทความสินค้า 20 อันดับ</a>
+                            <a class="nav-link" href="{% url 'article' %} ">บทความ 20 สินค้าขายดี</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                      หมวดหมู่สินค้า
                     </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                {% for cat in allcategory %}
+                            {% for cat in allcategory %}
                                 <li><a class="dropdown-item" href="{% url 'categorys' cat.catagory_title %} ">{{cat.catagory_title}}</a></li>
 
-                                {% endfor %}
+                            {% endfor %}
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -62,115 +62,75 @@
             </div>
         </nav>
     </section>
-    <section id="overflowproductcat">
-        <div class="container-fluid">
-            <div class="row d-inline-block w-100" style="overflow: auto; white-space: nowrap;">
-                <a href="{% url 'categorys' 'ทีวี' %}" class="text-center d-inline-block w-25 mx-auto"> <i class="bi bi-tv w-50" style="font-size: 4rem;"></i> <br> ทีวี</a>
-                <a href="{% url 'categorys' 'เครื่องซักผ้า' %}" class="text-center d-inline-block w-25 mx-auto"> <i class="bi bi-safe2 w-50" style="font-size: 4rem;"></i> <br> เครื่องซักผ้า</a>
-                <a href="{% url 'categorys' 'เครื่องปรับอากาศ' %}" class="text-center d-inline-block w-25 mx-auto"> <i class="bi bi-thermometer-snow w-50" style="font-size: 4rem;"></i> <br> เครื่องปรับอากาศ</a>
-                <a href="{% url 'categorys' 'ตู้เย็น' %}" class="text-center d-inline-block w-25 mx-auto"> <i class="bi bi-columns w-50" style="font-size: 4rem;"></i> <br> ตู้เย็น</a>
-                <a href="{% url 'categorys' 'โคมไฟ' %}" class="text-center d-inline-block w-25 mx-auto"> <i class="bi bi-lamp w-50" style="font-size: 4rem;"></i> <br> โคมไฟ</a>
-                <a href="{% url 'categorys' 'เฟอร์นิเจอร์' %}" class="text-center d-inline-block w-25 mx-auto"> <i class="bi bi-building w-50" style="font-size: 4rem;"></i> <br> เฟอร์นิเจอร์</a>
-                <a href="{% url 'categorys' 'คอมพิวเตอร์' %}" class="text-center d-inline-block w-25 mx-auto"> <i class="bi bi-windows w-50" style="font-size: 4rem;"></i> <br> คอมพิวเตอร์</p>
-                    <a href="{% url 'categorys' 'อุปกรณ์จัดเก็บ' %}" class="text-center d-inline-block w-25 mx-auto"> <i class="bi bi-bag w-50" style="font-size: 4rem;"></i> <br> อุปกรณ์จัดเก็บ</a>
-            </div>
-        </div>
+
     </section>
-    <section id="productoverviews">
+    <hr class="bi-hr">
+    <section id="productcat">
         <div class="container mt-2">
-            <h2 class="text-center mt-2">คุณกำลังดู {{product_name}} </h2>
-            <p class="text-center">ขายได้แล้ว {{singleProducts.product_sale}} ชิ้น อัพเดทล่าสุดเมื่อ {{singleProducts.update_date}} </p>
-            <p class="text-center">คะแนนรีวิว : <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i> 4.5 / 5 </p>
+            <h2 class="text-center mt-2">บทความสินค้าที่เราแนะนำ</h2>
+            <p class="text-center">ทั้งหมดนี้เป็นการแนะนำจากระบบการจัดอันดับเท่านั้น ซึ่งจะเลือกจากสินค้าที่มีผู้ชมเยอะที่สุดเป็นหลัก</p>
         </div>
         <div class="container mt-2">
             <div class="row d-inline-block w-100 text-center">
 
-                <div class="col-md-5 col-12 p-3 d-inline-block text-center">
+                    {% for content in all %}
+                     <div class="p-3 d-inline-block text-center col-md-5 col-12 shadow m-3 rounded-2">
+                     <a class="text-decoration-none text-dark" href="{% url 'top20article' content.catagory_title %}"><h4>20 อันดับสินค้าเกี่ยวกับ {{content.catagory_title}}ที่มีคนสนใจเยอะที่สุด</h4></a>
+                     <p> รวมสินค้าเกี่ยวกับ{{content.catagory_title}}ที่มีคนค้นหา และเลือกซื้อมากที่สุดในเว็บไซต์ชั้นนำ หากคุณกำลังมองหาสินค้าเกี่ยวกับ {{content.catagory_title}}สามารถเลือกซื้อโดยการเปรียบเทียบราคาจากที่นี้ได้เลย</p>
+                    </div>
 
-                    <img class="text-center" src="{{singleProducts.product_image1}}">
-                    <h3 class="text-wrap"> ราคาล่าสุด {{singleProducts.product_price}} ฿ </h3>
+                    {% endfor %}
+                {% comment %} {% for content in all %}
 
-                </div>
-                <div class="col-md-5 col-12  p-1 d-inline-block text-center">
-                    <p class="text-wrap"> {{product_name}} </p>
-                    <p> เว็บเรารวมสินค้า <b><a href="{% url 'categorys' singleProducts.product_category %} " class="text-decoration-none" >{{singleProducts.product_category}}</a></b> จากเว็บไซต์ยอดนิยมมากกว่า 5 เว็บไซต์มาให้เทียบราคา คุณสามารถเลือกซื้อตู้เย็นโดยรับส่วนลดจากเว็บต่างๆ
-                        ได้ในหมวดนี้ รับส่วนลดจาก Homepro รับส่วนลดจาก Shopee รับส่วนลดจาก Lazada</p>
-
+                <div class="p-3 d-inline-block text-center col-md-12 col-12 shadow m-3 rounded-2">
+                    <a href="{% url 'productdetails' product.product_title %}" class="text-wrap text-decoration-none" > <h3 class="text-wrap text-decoration-none">{{ product.product_title }}</h3> </a>
+                    <a href="{% url 'productdetails' product.product_title %} "><img class="text-center" src="{{product.product_image1}}"></a>
+                    <p class="text-wrap"> ราคาล่าสุด {{ product.product_price }} ฿ </p></a>
                     <div class="row md-2 p-2">
-                        <a href="{{singleProducts.shopee_link}}" class="text-decoration-none col-12 col-md-6 text-white bg-danger p-2 rounded-3">
+                        <a href="{{product.shopee_link}}" class="col-12 col-md-6 text-white bg-danger p-2 text-decoration-none border-5 rounded-3">
                             สั่งซื้อผ่าน Shopee
                         </a>
-                        <a href="{{singleProducts.lazada_link}}" class="text-decoration-none col-12 col-md-6 text-white bg-warning p-2 rounded-3">
+                        <a href="{{product.lazada_link}}" class="col-12 col-md-6 text-white bg-warning p-2 text-decoration-none border-5 rounded-3">
                             สั่งซื้อผ่าน Lazada
                         </a>
-                        <a href="{{singleProducts.homepro_link}}" class="text-decoration-none col-12 col-md-12 text-white bg-primary p-2 rounded-3">
+                        <a href="{{product.homepro_link}}" class="col-12 col-md-12 text-white bg-primary p-2 text-decoration-none border-5 rounded-3">
                             สั่งซื้อผ่านHomepro
                         </a>
                     </div>
+
+                    <p> <a href="{% url 'productdetails' product.product_title %}" class="text-wrap text-decoration-none" >{{ product.product_title }}</a> มี {{product.product_details}} ถือว่าเป็นอีกสินค้าที่มีความน่าสนใจมากๆ และถูกเลือกมาอยู่ใน 20 อันดับ สินค้าในหมวด <b> <a class="text-decoration-none" href="{% url 'categorys' product.product_category %} ">{{ product.product_category }} </a></b> ราคาตอนนี้ถือน่าสนใจมาก.. จากข้อมูลในตลาดพบว่าราคาที่ถูกที่สุดตอนนี้ {{ product.product_price }} สามารถเลือกซื้อได้ตามร้านค้าปลีกและ Marketplace อย่าง Shopee และ Lazada ได้ แต่ทั้งนี้ราคาอาจจะขึ้นอยู่กับโปรโมชั่น ณ วันที่ขายครับ </p>
+                    <p> หากตอนนี้กำลังศึกษาและหาข้อมูลว่าจะเลือกซื้อสินค้าในหมวด {{ product.product_category }} ยังไงดี หรือการเลือกซื้อ{{ product.product_category }} วิธีการเลือก{{ product.product_category }} ต้องดูตรงไหนบ้าง บทความนี้เราได้รวบรวมสินค้าเอาไว้ให้คุณหมดแล้ว และที่สำคัญ <a href="{% url 'productdetails' product.product_title %}" class="text-wrap text-decoration-none" >{{ product.product_title }}</a> เป็นสินค้าที่ถูกเลือกมาติด Top20 ในระบบของเรา คุณสามารถเลือกซื้อได้เลย! </p>
                 </div>
+
+                {% endfor %} {% endcomment %}
             </div>
 
-            <div class="row d-inline-block w-100" style="overflow: auto; white-space: nowrap;">
-                <p class="d-inline-block w-50 text-wrap text-center">เลื่อนดูโปรโมชั่นบัตรเครติดที่ร่วมรายการ</p>
-                <a class="d-inline-block w-50 text-wrap text-center" href="#">โปรโมชั่นบัตร Firstchoie Homepro</a>
-                <a class="d-inline-block w-50 text-wrap text-center" href="#">โปรโมชั่นบัตร KTC Homepro</a>
-                <a class="d-inline-block w-50 text-wrap text-center" href="#">สิทธิพิเศษบัตรเครดิตโฮมโปร วีซ่า แพลทินัม</a>
-                <a class="d-inline-block w-50 text-wrap text-center" href="#">โปรโมชั่นบัตรซื้อของออนไลน์กับ Lazada</a>
-                <a class="d-inline-block w-50 text-wrap text-center" href="#">โปรโมชั่นบัตรซื้อของออนไลน์กับ Shopee</a>
-            </div>
 
-    </section>
-    <hr class="bi-hr">
 
-    <section id="seo_core_product">
-        <div class="container border-1 rounded-2 border-danger">
-            <p> ในปัจจุบันสินค้าในหมวด <a href="{% url 'categorys' singleProducts.product_category %} " class="text-decoration-none">{{singleProducts.product_category}}</a> มีความต้องการสูงมากขึ้นเรื่อยๆ ทำให้สินค้า {{product_name}} มีความต้องการและเป็นที่ค้นหาของลูกค้าอยู่เสมอ
-                ด้วยคุณสมบัติที่สามารถตอบโจทย์การใช้งานในชีวิตประจำวันได้ ทำให้มีหลายเว็บไซต์ เอาสินค้านี้ไปวางขายกันมากมาย แต่ {{product_name}} ราคาที่ถูกที่สุดและร่วมกับโปรโมชั่นที่โดนใจที่สุดนั้น อาจจะทำให้คุณต้องวุนวายหาข้อมูลกันยกใหญ่</p>
-            <br>
-            <p> หากตอนนี้กำลังหา {{product_name}} ไม่ต้องทำการบ้านหรือกังวลอะไรอีกแล้วครับ เพราะเรารวบรวมราคาจากเว็บไซต์ชื่อดังเอาไว้มากมาย ไว้ให้คุณได้เลือกใช้งานและเปรียบเทียบราคากัน พร้อมกับโปรโมชั่นบัตรเครติดที่ร่วมรายการ จะทำให้คุณได้เจอกับ {{product_name}}
-                ที่ราคาโดนใจที่สุดแน่นอน ทั้งนี้ข้อมูลที่แสดงข้างต้นเป็นข้อมูลจากวันที่ {{update_date}} ที่ระบบของเราได้ทำการ เก็บข้อมูลมา หากมีการเปลี่ยนแปลงราคา หรือโปรโมชั่น ต้องขออภัยในความไม่สะดวก ณ ที่นี้ ด้วยครับ หรือหากต้องการหาสินค้าอื่นๆ ในหมวดหมู่
-                <a href="{% url 'categorys' singleProducts.product_category %} " class="text-decoration-none">{{singleProducts.product_category}}</a> สามารถเลือกซื้อได้จากที่นี้ เราหวังเป็นอย่างยิ่งว่า จะทำเสมอประสบการณ์การสั่งซื้อที่ดีที่สุดให้กับคุณ
-                ขอบคุณที่แวะเข้ามาใช้บริการครับ
-            </p>
         </div>
-
     </section>
-    <section id="tableprice">
-        <div class="container">
-            <div class="table-responsive">
-                <table class="table p-3">
-                    <thead>
-                        <tr>
-                            <th scope="col">เว็บไซต์ที่ขายสินค้า</th>
-                            <th scope="col">ราคาล่าสุด</th>
-                            <th scope="col">สั่งซื้อออนไลน์</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>HOMEPRO</td>
-                            <td>{{singleProducts.product_price}} ฿</td>
-                            <td>
-                                <a href="{{singleProducts.homepro_link}}" class="btn-success border-2 rounded-3 m-2 p-1 text-decoration-none"> สั่งซื้อสินค้า</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>LAZADA</td>
-                            <td>{{lazadaprice}} ฿</td>
-                            <td><a href="{{singleProducts.lazada_link}}" class="btn-success border-2 rounded-3 m-2 p-1 text-decoration-none"> สั่งซื้อสินค้า</a></td>
-                        </tr>
-                        <tr>
-                            <td>SHOPEE</td>
-                            <td>{{shopeeprice}} ฿</td>
-                            <td><a href="{{singleProducts.shopee_link}}" class="btn-success border-2 rounded-3 m-2 p-1 text-decoration-none"> สั่งซื้อสินค้า</a></td>
-                        </tr>
-                    </tbody>
-                </table>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <nav aria-label="Page navigation">
+                    {% if all.paginator.num_pages > 1 %}
+                    <ul class="">
+                        {% for page_number in all.paginator.page_range %}
+                        <li class="d-inline-block"><a class="page-link" href="?page={{page_number}}">หน้า {{page_number}}</a></li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </nav>
             </div>
         </div>
+    </div>
+    </div>
 
-    </section>
-    <hr class="bi-hr">
+    <!-- end row -->
+
+
+
     <section id="seo">
         <div class="container">
             <p> ตลาดนกฮูกออนไลน์ เว็บรวมเครื่องใช้ไฟฟ้า ทีวีลดราคา เรารวมสินค้ามากมายจากเว็บดังเอาไว้มากกว่า 50,000 รายการให้คุณสามารถเปรียบเทียบราคาและเลือกซื้อสินค้าออนไลน์ได้ตลอด 24 ชั่วโมง </p>
