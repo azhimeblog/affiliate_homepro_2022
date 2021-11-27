@@ -24,7 +24,7 @@
     <section id="header" class="sticky-top">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><i class="bi bi-hourglass-split"></i>ตลาดนกฮูก</a>
+                <a class="navbar-brand" href="{% url 'index' %} "><i class="bi bi-hourglass-split"></i>ตลาดนกฮูก</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -64,6 +64,17 @@
     </section>
 
     </section>
+
+        <section id="overflowproductcat">
+        <div class="container-fluid">
+            <div class="row d-inline-block w-100" style="overflow: auto; white-space: nowrap;">
+            {% for category in allcategory %}
+            <a href="{% url 'categorys' category.catagory_title %}" class="text-center d-inline-block w-25 mx-auto"> <img class="w-50 p-2 m-2 shadow-sm rounded-rounded-circle" src="{{category.catagory_details}}"><br> {{category.catagory_title}}</a>
+            {% endfor %}
+            </div>
+        </div>
+    </section>
+
     <hr class="bi-hr">
     <section id="productcat">
         <div class="container mt-2">
@@ -75,8 +86,10 @@
 
                     {% for content in all %}
                      <div class="p-3 d-inline-block text-center col-md-5 col-12 shadow m-3 rounded-2">
+                     <img class="w-50 p-2 shadow rounded-circle m-3" src="{{content.catagory_details}}" >
                      <a class="text-decoration-none text-dark" href="{% url 'top20article' content.catagory_title %}"><h4>20 อันดับสินค้าเกี่ยวกับ {{content.catagory_title}}ที่มีคนสนใจเยอะที่สุด</h4></a>
                      <p> รวมสินค้าเกี่ยวกับ{{content.catagory_title}}ที่มีคนค้นหา และเลือกซื้อมากที่สุดในเว็บไซต์ชั้นนำ หากคุณกำลังมองหาสินค้าเกี่ยวกับ {{content.catagory_title}}สามารถเลือกซื้อโดยการเปรียบเทียบราคาจากที่นี้ได้เลย</p>
+                     <a class="text-decoration-none" href="{% url 'top20article' content.catagory_title %}"><h4 class="btn bg-primary text-light">อ่านต่อ..</h4></a>
                     </div>
 
                     {% endfor %}

@@ -24,7 +24,7 @@
     <section id="header" class="sticky-top">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><i class="bi bi-hourglass-split"></i>ตลาดนกฮูก</a>
+                <a class="navbar-brand" href="{% url 'index' %}"><i class="bi bi-hourglass-split"></i>ตลาดนกฮูก</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -62,20 +62,17 @@
             </div>
         </nav>
     </section>
+
     <section id="overflowproductcat">
         <div class="container-fluid">
             <div class="row d-inline-block w-100" style="overflow: auto; white-space: nowrap;">
-                <a href="{% url 'categorys' "ทีวี" %}" class="text-center d-inline-block w-25 mx-auto"> <i class="bi bi-tv w-50" style="font-size: 4rem;"></i> <br> ทีวี</a>
-                <a href="{% url 'categorys' "เครื่องซักผ้า" %}"  class="text-center d-inline-block w-25 mx-auto"> <i class="bi bi-safe2 w-50" style="font-size: 4rem;"></i> <br> เครื่องซักผ้า</a>
-                 <a href="{% url 'categorys' "เครื่องปรับอากาศ" %}" class="text-center d-inline-block w-25 mx-auto"> <i class="bi bi-thermometer-snow w-50" style="font-size: 4rem;"></i> <br> เครื่องปรับอากาศ</a>
-                <a href="{% url 'categorys' "ตู้เย็น" %}" class="text-center d-inline-block w-25 mx-auto"> <i class="bi bi-columns w-50" style="font-size: 4rem;"></i> <br> ตู้เย็น</a>
-                <a href="{% url 'categorys' "โคมไฟ" %}" class="text-center d-inline-block w-25 mx-auto"> <i class="bi bi-lamp w-50" style="font-size: 4rem;"></i> <br> โคมไฟ</a>
-                <a href="{% url 'categorys' "เฟอร์นิเจอร์" %}" class="text-center d-inline-block w-25 mx-auto"> <i class="bi bi-building w-50" style="font-size: 4rem;"></i> <br> เฟอร์นิเจอร์</a>
-                <a href="{% url 'categorys' "คอมพิวเตอร์" %}" class="text-center d-inline-block w-25 mx-auto"> <i class="bi bi-windows w-50" style="font-size: 4rem;"></i> <br> คอมพิวเตอร์</p>
-                <a href="{% url 'categorys' "อุปกรณ์จัดเก็บ" %}" class="text-center d-inline-block w-25 mx-auto"> <i class="bi bi-bag w-50" style="font-size: 4rem;"></i> <br> อุปกรณ์จัดเก็บ</a>
+            {% for category in allcategory %}
+            <a href="{% url 'categorys' category.catagory_title %}" class="text-center d-inline-block w-25 mx-auto"> <img class="w-50 p-2 m-2 shadow-sm rounded-rounded-circle" src="{{category.catagory_details}}"><br> {{category.catagory_title}}</a>
+            {% endfor %}
             </div>
         </div>
     </section>
+
     <section id="topproductview">
         <div class="container mt-2">
             <h2 class="text-center mt-2">20 อันดับสินค้าหมวด {{cat_name}} ที่มีคนสนใจเยอะที่สุด </h2>
